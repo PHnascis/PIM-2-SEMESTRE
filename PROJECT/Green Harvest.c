@@ -54,12 +54,13 @@ int main(){
 
                 case 1:
 
-                    int x;
+
 
                     printf("\nDIGITE A QUANTIDADE DE PRODUTOS QUE SERÃO CADASTRADOS: ");
+                     int x, i;
                         scanf("%d", &x);
 
-                    for(int i;i <= x; i++ ){
+                    for(i = 1;i <= x; i++ ){
 
                         printf("---------------------------------------\n");
                         printf("********CADASTRO DE PRODUTOS***********\n");
@@ -72,15 +73,12 @@ int main(){
                             scanf("%d", &codProduto);
                         printf("\nNOME DO PRODUTO:                     \n");
                             scanf("%s", &nomeProduto);
-                        printf("\nQUANTIDADE DO PRODUTO:               \n");
-                            scanf("%d", &qtdProduto);
                         printf("\nVALOR UNITÁRIO DO PRODUTO:           \n");
                             scanf("%f", &valorProduto);
                         printf("\n-------------------------------------\n");
 
                         printf("\nCÓDIGO DO PRODUTO: %d\n", codProduto);
                         printf("\nNOME DO PRODUTO:   %s\n", nomeProduto);
-                        printf("\nQUANTIDADE DO PRODUTO:  %d\n", qtdProduto);
                         printf("\nVALOR UNITÁRIO DO PRODUTO:   %.2f\n", valorProduto);
                         printf("\nPRODUTO CADASTRADO COM SUCESSO!!! \n\n" );
                     }
@@ -89,8 +87,8 @@ int main(){
 
             case 2:
 
-                
-                    
+
+
 
 
 
@@ -101,10 +99,10 @@ int main(){
 
             case 3:
 
-                printf("%d", codProduto);               
+                //printf("%d", codProduto);
 
 
-                
+
 
 
 
