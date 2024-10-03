@@ -1,0 +1,123 @@
+#include <stdio.h>
+#include <locale.h>
+
+#define MAX_PRODUTOS 100
+
+typedef struct {
+    int codProduto;
+    char nomeProduto[30];
+    float valorProduto;
+} Produto;
+
+Produto produtos[MAX_PRODUTOS];
+int numProdutos = 0;
+
+void gravarProdutos() {
+    FILE *file = fopen("produtos.txt", "w");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo para gravar.\n");
+        return;
+    }
+
+    for (int i = 0; i < numProdutos; i++) {
+        fprintf(file, "%d %s %.2f\n", produtos[i].codProduto, produtos[i].nomeProduto, produtos[i].valorProduto);
+    }
+
+    fclose(file);
+    printf("Produtos gravados com sucesso!\n");
+}
+
+void cadastrarProdutos() {
+    printf("\nDIGITE A QUANTIDADE DE PRODUTOS QUE SERÃO CADASTRADOS: ");
+    int x, i;
+    scanf("%d", &x);
+
+    for (i = 0; i < x && numProdutos < MAX_PRODUTOS; i++) {
+        printf("---------------------------------------\n");
+        printf("********CADASTRO DE PRODUTOS***********\n");
+        printf("---------------------------------------\n");
+
+        printf("\nCÓDIGO DO PRODUTO:                   \n");
+        scanf("%d", &produtos[numProdutos].codProduto);
+        printf("\nNOME DO PRODUTO:                     \n");
+        scanf("%s", produtos[numProdutos].nomeProduto);
+        printf("\nVALOR UNITÁRIO DO PRODUTO:           \n");
+        scanf("%f", &produtos[numProdutos].valorProduto);
+        printf("\n-------------------------------------\n");
+
+        printf("\nCÓDIGO DO PRODUTO: %d\n", produtos[numProdutos].codProduto);
+        printf("\nNOME DO PRODUTO:   %s\n", produtos[numProdutos].nomeProduto);
+        printf("\nVALOR UNITÁRIO DO PRODUTO:   %.2f\n", produtos[numProdutos].valorProduto);
+        printf("\nPRODUTO CADASTRADO COM SUCESSO!!! \n\n");
+
+        numProdutos++;
+    }
+
+    // Gravar produtos no arquivo após o cadastro
+    gravarProdutos();
+}
+
+int main() {
+    setlocale(LC_ALL, "Portuguese");
+
+    while (1) {
+        int firstOption;
+
+        printf("---------------------------------------\n");
+        printf("*******HORTIFRUIT GREEN HARVEST********\n");
+        printf("---------------------------------------\n");
+        printf("\n      DIGITE SOMENTE NÚMEROS         \n");
+        printf("\n\nSELECIONE A OPÇÃO REQUERIDA:       \n");
+        printf("\n(1) - PRODUTOS                       \n");
+        printf("\n(2) - OPERAÇÃO DE CAIXA              \n");
+        printf("\n(3) - SERVIÇOS DO SERVIDOR           \n");
+        printf("---------------------------------------\n");
+
+        scanf("%d", &firstOption);
+
+        if (firstOption < 1 || firstOption > 3) {
+            printf("\nERRO: DIGITE O NÚMERO NOVAMENTE\n\n");
+            continue; // Continue to the next iteration of the main loop
+        }
+
+        if (firstOption == 1) {
+            while (1) {
+                int selectNumber;
+                printf("\n\n---------------------------------------\n");
+                printf("*******HORTIFRUIT GREEN HARVEST********\n");
+                printf("**************PRODUTOS*****************\n");
+                printf("---------------------------------------\n");
+                printf("\n      DIGITE SOMENTE NÚMEROS         \n");
+                printf("\n\nSELECIONE A OPÇÃO REQUERIDA:       \n");
+                printf("\n(1) - CADASTRAR PRODUTOS             \n");
+                printf("\n(2) - CALCULAR PREÇO                 \n");
+                printf("\n(3) - CONFERIR PRODUTOS              \n");
+                printf("\n(0) - VOLTAR                         \n"); // Added option to go back
+                printf("---------------------------------------\n");
+                scanf("%d", &selectNumber);
+
+                if (selectNumber < 0 || selectNumber > 3) {
+                    printf("\nERRO: DIGITE O NÚMERO NOVAMENTE\n\n");
+                    continue; // Continue to the next iteration of the product menu loop
+                }
+
+                if (selectNumber == 0) {
+                    break; // Exit the product menu
+                }
+
+                switch (selectNumber) {
+                    case 1:
+                        cadastrarProdutos();
+                        break;
+
+                    case 2:
+                        printf("\nFUNÇÃO NÃO ADICIONADA\n");
+
+                        break;
+                }
+            }
+        }
+    }
+
+    return 0;
+}
