@@ -208,8 +208,7 @@ int main() {
                 printf("\n      DIGITE SOMENTE NÚMEROS         \n");
                 printf("\n\nSELECIONE A OPÇÃO REQUERIDA:       \n");
                 printf("\n(1) - CADASTRAR PRODUTOS             \n");
-                printf("\n(2) - ABERTURA DE CAIXA              \n");
-                printf("\n(3) - CONFERIR PRODUTOS              \n");
+                printf("\n(2) - CONFERIR PRODUTOS              \n");                
                 printf("\n(0) - VOLTAR                         \n");
                 printf("---------------------------------------\n");
                 scanf("%d", &selectNumber);
