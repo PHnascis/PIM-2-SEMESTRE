@@ -17,6 +17,7 @@ int caixaAberto = 0;
 float saldoInicial = 0.0;
 float saldoAtual = 0.0;
 
+// Função que exibe as especificações do servidor.
 void exibirEspecificacoesServidor() {
     printf("\n---------------------------------------\n");
     printf("Status: Conectando ao servidor...\n");
@@ -40,6 +41,7 @@ void exibirEspecificacoesServidor() {
     printf("---------------------------------------\n");
 }
 
+// Função que grava os produtos cadastrados em um arquivo texto.
 void gravarProdutos() {
     FILE *file = fopen("produtos.txt", "w");
     if (file == NULL) {
@@ -53,6 +55,7 @@ void gravarProdutos() {
     printf("Produtos gravados com sucesso!\n");
 }
 
+// Função que exibe os produtos cadastrados.
 void mostrarProdutos() {
     if (numProdutos == 0) {
         printf("Nenhum produto cadastrado.\n");
@@ -68,6 +71,7 @@ void mostrarProdutos() {
     }
 }
 
+// Função que cadastra novos produtos com base na quantidade especificada pelo usuário.
 void cadastrarProdutos() {
     printf("\nDIGITE A QUANTIDADE DE PRODUTOS QUE SERÃO CADASTRADOS: ");
     int x;
@@ -100,6 +104,7 @@ void cadastrarProdutos() {
     gravarProdutos();
 }
 
+// Função que abre o caixa, autenticando o funcionário e definindo o saldo inicial.
 void abrirCaixa() {
     if (caixaAberto) {
         printf("O caixa já está aberto.\n");
@@ -118,6 +123,7 @@ void abrirCaixa() {
     printf("Caixa aberto com sucesso! Saldo inicial: R$ %.2f\n", saldoInicial);
 }
 
+// Função que fecha o caixa e exibe o saldo final.
 void fecharCaixa() {
     if (!caixaAberto) {
         printf("O caixa não está aberto.\n");
@@ -128,6 +134,7 @@ void fecharCaixa() {
     caixaAberto = 0;
 }
 
+// Função que exibe o saldo atual do caixa, se estiver aberto.
 void exibirSaldoCaixa() {
     if (!caixaAberto) {
         printf("O caixa está fechado.\n");
@@ -136,6 +143,7 @@ void exibirSaldoCaixa() {
     printf("Saldo atual do caixa: R$ %.2f\n", saldoAtual);
 }
 
+// Função que autentica o funcionário através de um ID.
 int autenticarFuncionario() {
     const int idGabriela = 1234;
     const int idGabriel = 4321;
@@ -161,6 +169,7 @@ int autenticarFuncionario() {
     return 0;
 }
 
+// Função que registra uma compra, atualizando o saldo do caixa.
 void registrarCompra() {
     if (!caixaAberto) {
         printf("O caixa está fechado. Abra o caixa antes de registrar uma compra.\n");
@@ -267,9 +276,9 @@ int main() {
             scanf("%d", &productOption);
 
             if (productOption == 1) {
-                cadastrarProdutos();
+                cadastrarProdutos(); // Chama a função para cadastrar novos produtos
             } else if (productOption == 2) {
-                mostrarProdutos();
+                mostrarProdutos(); // Chama a função para listar produtos
             } else {
                 printf("Opção inválida.\n");
             }
@@ -284,26 +293,26 @@ int main() {
             scanf("%d", &caixaOption);
 
             if (caixaOption == 1) {
-                abrirCaixa();
+                abrirCaixa(); // Chama a função para abrir o caixa
             } else if (caixaOption == 2) {
-                fecharCaixa();
+                fecharCaixa(); // Chama a função para fechar o caixa
             } else if (caixaOption == 3) {
-                exibirSaldoCaixa();
+                exibirSaldoCaixa(); // Chama a função para exibir o saldo do caixa
             } else if (caixaOption == 4) {
-                registrarCompra();
+                registrarCompra(); // Chama a função para registrar uma compra
             } else {
                 printf("Opção inválida.\n");
             }
 
         } else if (firstOption == 3) {
-            exibirEspecificacoesServidor();
+            exibirEspecificacoesServidor(); // Chama a função para exibir especificações do servidor
         } else if (firstOption == 4) {
             printf("Saindo do sistema...\n");
-            break;
+            break; // Sai do loop e finaliza o programa
         } else {
             printf("Opção inválida. Tente novamente.\n");
         }
     }
 
-    return 0;
+    return 0; // Retorna 0 indicando que o programa foi finalizado com sucesso
 }
