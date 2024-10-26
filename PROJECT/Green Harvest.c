@@ -3,7 +3,8 @@
 #include <string.h>
 #include <unistd.h> // Inclui a função sleep() para simular o processamento de pagamento
 
-#define MAX_PRODUTOS 100 // Define o número máximo de produtos que podem ser cadastrados
+#define MAX_PRODUTOS 100  
+//Define o número máximo de produtos que podem ser cadastrados
 
 // Estrutura para armazenar as informações de um produto
 typedef struct {
