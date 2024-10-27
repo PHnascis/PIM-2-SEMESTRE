@@ -291,7 +291,7 @@ int main() {
         printf("---------------------------------------\n");
         printf("\n      DIGITE SOMENTE NÚMEROS         \n");
         printf("\n\nSELECIONE A OPÇÃO REQUERIDA:       \n");
-        printf("\n(1) - OPERAÇÃO DE PRODUTOS           \n");
+        printf("\n(1) - PRODUTOS                       \n");
         printf("\n(2) - CAIXA                          \n");
         printf("\n(3) - SERVIDOR                       \n");
         printf("---------------------------------------\n");
